@@ -1,0 +1,217 @@
+.signup {
+  padding-top: 74px;
+  background-color: #eee;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__form {
+    margin: 0 70px;
+    width: calc(100% - (70px * 2));
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .form {
+      &__button {
+        margin-top:31px;
+        width: 100%;
+        height: 42px;
+        color: #fff;
+        background-color: #4be1ab;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-bottom-left-radius: 50px;
+
+        font-family: "Open Sans", sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        &--disabled {
+          opacity: 0.5;
+          cursor: default;
+        }
+      }
+
+      &__row {
+        display: flex;
+        justify-content: space-between;
+
+        .form__group {
+          width: calc(50% - 15px);
+        }
+      }
+
+      &__group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 25px;
+      }
+
+      &__label {
+        font-family: "Open Sans", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #7a8196;
+
+        &--require {
+          color: #ec5b5c;
+        }
+      }
+
+      &__input {
+        border: 1px solid #d5dce5;
+        margin-top: 12px;
+        width: calc(100% - 13px);
+        height: 40px;
+        border-radius: 6px;
+
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+
+        padding-left: 13px;
+
+        color: #3a405b;
+
+        &::placeholder {
+          opacity: 0.5;
+        }
+      }
+
+      &__datepicker {
+        .datepicker {
+          &__input {
+            margin-top: 13px;
+            border: 1px solid #d5dce5;
+            margin-top: 12px;
+            width: 100%;
+            height: 40px !important;
+            border-radius: 6px;
+
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px !important;
+            font-weight: 600;
+
+            padding-left: 13px;
+
+            color: #3a405b;
+          }
+        }
+      }
+
+      &__select {
+        width: 100%;
+        margin-top: 12px;
+        cursor: pointer;
+        height: 40px;
+
+        & input {
+          border: 1px solid #d5dce5;
+          margin-top: 12px;
+          width: calc(100% - 13px);
+          height: 30px !important;
+          border-radius: 6px;
+
+          font-family: "Open Sans", sans-serif;
+          font-size: 14px !important;
+          font-weight: 600;
+
+          padding-left: 13px;
+
+          color: #3a405b;
+
+          &::placeholder {
+            opacity: 0.5;
+          }
+        }
+
+        & .selected-tag {
+          font-family: "Open Sans", sans-serif;
+          font-size: 14px !important;
+          font-weight: 600;
+
+          color: #3a405b;
+          padding-left: 13px;
+        }
+      }
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #343e5c;
+  }
+
+  &__header {
+    width: 570px;
+    height: 170px;
+    background-color: #fff;
+
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .header {
+      &__text {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #3a405b;
+      }
+
+      &__login {
+        color: #adb1bd;
+      }
+
+      &__slash {
+        margin: 0 15px;
+      }
+
+      &__row {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        &:last-child {
+          margin-top: 6px;
+        }
+      }
+
+      &__content {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 21px;
+
+    width: 570px;
+    height: 770px;
+    background-color: #fff;
+    border-radius: 6px;
+
+    .content {
+      &__title {
+        margin-top: 40px;
+      }
+    }
+  }
+}
+
+.vdp-datepicker__calendar {
+    top: -270px;
+}

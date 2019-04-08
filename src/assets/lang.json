@@ -1,0 +1,10 @@
+{
+    "signup": {
+        "page_title": {
+            "en": "New User"
+        },
+        "form_name": {
+            "en": "SignUp"
+        }
+    }
+}
