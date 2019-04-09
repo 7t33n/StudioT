@@ -18,6 +18,13 @@ import {
     SET_LAST_NAME
 } from './../actions/user';
 
+import {
+    REG_REQUEST,
+    REG_SUCCESS,
+    REG_ERROR,
+    REG_REJECT
+} from './../actions/user';
+
 const state = {
     login: '',
     email: '',
@@ -28,6 +35,12 @@ const state = {
     city: '',
     date: '',
     zip_code: '',
+
+
+    popup: {
+        show: false,
+        msg: '',
+    }
 };
 
 const getters = {
@@ -38,10 +51,59 @@ const getters = {
 };
 
 const actions = {
-
+    [REG_REQUEST]: async ({commit, dispatch}) => {
+        commit(REG_REQUEST);
+        //check empty input
+        if(!state.login && !state.email && !state.password) {
+            commit(REG_ERROR);
+            dispatch(REG_ERROR);
+        } else {
+            try {
+                // запрос на сервер
+                commit(REG_SUCCESS);
+            } catch (e) {
+                commit(REG_REJECT, e);
+            }
+        }
+    }
 };
 
 const mutations = {
+
+    [REG_REQUEST]: (state) => {
+        state.status = 'proccesing';
+    },
+
+    [REG_SUCCESS]: (state) => {
+        state.status = true;
+        state.popup.show = true;
+        state.popup.msg = "YOUR WELCOME";
+    
+        setTimeout(() => {
+            state.popup.show = false;
+        }, 5000)
+    },
+
+    [REG_ERROR]: (state) => {
+        state.status = false;
+        state.popup.show = true;
+        state.popup.msg = "ERROR INPUT EMPTY";
+    
+        setTimeout(() => {
+            state.popup.show = false;
+        }, 5000)
+    },
+
+    [REG_REJECT]: (state, error) => {
+        state.status = false;
+        state.popup.show = true;
+        state.popup.msg = "ERROR SERVER PROBLEM";
+
+        setTimeout(() => {
+            state.popup.show = false;
+        }, 5000)
+    },
+
     [SET_LOGIN]: (state, value) => {
         state.login = value;
     },

@@ -1,4 +1,7 @@
 <div class="signup">
+    <div class="popup" v-show="this.$store.state.user_module.popup.show">
+        <p class="popup__text">{{this.$store.state.user_module.popup.msg}}</p>
+    </div>
     <header class="signup__header">
         <div class="header__col">
             <h2 class="signup__title header__title">{{ lang.signup.page_title.en }}</h2>
@@ -16,7 +19,7 @@
     </header>
     <main class="signup__content">
         <h2 class="signup__title content__title">{{ lang.signup.form_name.en }}</h2>
-        <form class="signup__form">
+        <form class="signup__form" v-on:submit.prevent="onSubmit">
             <div class="form__col">
                 <div class="form__group">
                     <label for="SignUpFormInputLogin" class="form__label">
@@ -66,15 +69,15 @@
                 <div class="form__row">
                     <div class="form__group">
                         <label for="" class="form__label">date of birth</label>
-                        <datepicker class="form__datepicker" input-class="datepicker__input"></datepicker>
+                        <datepicker v-model="date" class="form__datepicker" calendar-class="datapicker__calendar" input-class="datepicker__input" :disabledDates="disabledDays"></datepicker>
                     </div>
                     <div class="form__group">
                         <label for="SignUpFormInputZipCode" class="form__label">Zip Code</label>
-                        <input id="SignUpFormInputZipCode" type="text" class="form__input">
+                        <input v-model="zip_code" id="SignUpFormInputZipCode" type="text" class="form__input">
                     </div>
                 </div>
             </div>
-            <button type="submit" class="form__button form__button--disabled">sign up</button>
+            <button type="submit" class="form__button" :class="{'form__button--disabled': RequireForm}" :disabled="RequireForm">sign up</button>
         </form>
     </main>
 </div>

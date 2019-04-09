@@ -22,3 +22,10 @@ export const SET_COUNTRY = "SET_COUNTRY";
 export const SET_CITY = "SET_CITY";
 export const SET_DATE = "SET_DATE";
 export const SET_ZIP_CODE = "SET_ZIP_CODE";
+
+
+//ACTIONS 
+export const REG_REQUEST = 'REG_REQUEST';
+export const REG_SUCCESS = 'REG_SUCCESS';
+export const REG_ERROR = 'REG_ERROR';
+export const REG_REJECT = 'REG_REJECT';
