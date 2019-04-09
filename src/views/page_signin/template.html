@@ -1,0 +1,83 @@
+<div class="signup">
+    <div class="popup" v-show="this.$store.state.user_module.popup.show">
+        <p class="popup__text">{{this.$store.state.user_module.popup.msg}}</p>
+    </div>
+    <header class="signup__header">
+        <div class="header__col">
+            <h2 class="signup__title header__title">{{ lang.signup.page_title.en }}</h2>
+        </div>
+        <div class="header__content header__col">
+            <div class="header__row">
+                <span class="header__name header__text">{{ first_name }} {{ last_name }}</span>
+                <span class="header__text header__slash" v-show="CheckEmpty">/</span>
+                <span class="header__login header__text">{{ login }}</span>
+            </div>
+            <div class="header__row">
+                <span class="header__text">{{ email }}</span>
+            </div>
+        </div>
+    </header>
+    <main class="signup__content">
+        <h2 class="signup__title content__title">{{ lang.signup.form_name.en }}</h2>
+        <form class="signup__form" v-on:submit.prevent="onSubmit">
+            <div class="form__col">
+                <div class="form__group">
+                    <label for="SignUpFormInputLogin" class="form__label">
+                        <span>login</span>
+                        <span class="form__label--require">*</span>
+                    </label>
+                    <input v-model="login" id="SignUpFormInputLogin" type="text" placeholder="SomeCool:)" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="SignUpFormInputEmail" class="form__label">
+                        <span>e-mail</span>
+                        <span class="form__label--require">*</span>
+                    </label>
+                    <input v-model="email" id="SignUpFormInputEmail" type="text" placeholder="SomeCool@gmail.com" class="form__input">
+                </div>
+                <div class="form__group">
+                    <label for="SignUpFormInputPassword" class="form__label">
+                        <span>password</span>
+                        <span class="form__label--require">*</span>
+                    </label>
+                    <input v-model="password" id="SignUpFormInputPassword" type="password" placeholder="" class="form__input">
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="SignUpFormInputFirstName" class="form__label">
+                            <span>first name</span>
+                        </label>
+                        <input v-model="first_name" id="SignUpFormInputFirstName" type="text" class="form__input">
+                    </div>
+                    <div class="form__group">
+                        <label for="SignUpFormInputLastName" class="form__label">
+                            <span>last name</span>
+                        </label>
+                        <input v-model="last_name" id="SignUpFormInputLastName" type="text" class="form__input">
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="" class="form__label">Country</label>
+                        <v-select v-model="country" class="form__select" placeholder="Select" :options="country_option"></v-select>
+                    </div>
+                    <div class="form__group">
+                        <label for="" class="form__label">City</label>
+                        <v-select :disabled="!country" v-model="city" class="form__select" placeholder="Select" :options="getFilteredCity"></v-select>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="" class="form__label">date of birth</label>
+                        <datepicker v-model="date" class="form__datepicker" calendar-class="datapicker__calendar" input-class="datepicker__input" :disabledDates="disabledDays"></datepicker>
+                    </div>
+                    <div class="form__group">
+                        <label for="SignUpFormInputZipCode" class="form__label">Zip Code</label>
+                        <input v-model="zip_code" id="SignUpFormInputZipCode" type="text" class="form__input">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="form__button" :class="{'form__button--disabled': RequireForm}" :disabled="RequireForm">sign up</button>
+        </form>
+    </main>
+</div>
